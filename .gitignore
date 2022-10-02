@@ -128,8 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-<<<<<<< Updated upstream
-.npy
-=======
-.npy
->>>>>>> Stashed changes
+*.npy
