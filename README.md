@@ -1,11 +1,10 @@
 # Codes for XX
 
 ## Previous Deforestation Map Generator
-```
-usage: previous-def-gen.py [-h] [-b BASE_IMAGE] [-d DEFORESTATION_SHAPE] [-p PREVIOUS_DEFORESTATION_SHAPE] [-y YEAR] [-o OUTPUT_PATH]
-
 Generate .tif previous deforestation temporal distance map. As older is the deforestation, the value is close to 0. As recent is the deforestation, the value is      
 close to 1
+```
+usage: previous-def-gen.py [-h] [-b BASE_IMAGE] [-d DEFORESTATION_SHAPE] [-p PREVIOUS_DEFORESTATION_SHAPE] [-y YEAR] [-o OUTPUT_PATH]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -20,9 +19,12 @@ optional arguments:
                         Path to output label .tif folder
                         
  ```
- ## Label Generation
- Generate .tif label file from PRODES deforestation shapefile.
-
+## Label Generation
+Generate .tif label file from PRODES deforestation shapefile.
+```
+usage: label-gen.py [-h] [-b BASE_IMAGE] [-d DEFORESTATION_SHAPE] [-p PREVIOUS_DEFORESTATION_SHAPE] [-w HYDROGRAPHY_SHAPE] [-n NO_FOREST_SHAPE] [-y YEAR]
+                    [-o OUTPUT_PATH] [-i INNER_BUFFER] [-u OUTER_BUFFER]
+                    
 optional arguments:
   -h, --help            show this help message and exit
   -b BASE_IMAGE, --base-image BASE_IMAGE
@@ -42,3 +44,4 @@ optional arguments:
                         Inner buffer between deforestation and no deforestation to be ignored
   -u OUTER_BUFFER, --outer-buffer OUTER_BUFFER
                         Outer buffer between deforestation and no deforestation to be ignored
+```
