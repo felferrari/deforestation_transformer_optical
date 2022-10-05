@@ -1,4 +1,4 @@
-# Codes for XX
+# A Transformer-based network for deforestation detection from bitemporal optical images
 
 ## Previous Deforestation Map Generator
 Generate .tif previous deforestation temporal distance map. As older is the deforestation, the value is close to 0. As recent is the deforestation, the value is close to 1
