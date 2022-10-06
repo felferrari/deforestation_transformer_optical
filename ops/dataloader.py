@@ -27,11 +27,11 @@ def train_data_gen(year):
     t_0 = f'{year-1}'
     t_1 = f'{year}'
 
-    labels = np.load(os.path.join(prep_path, f'{general.LABEL_PREFIX}_{year}.npy')).reshape((-1,1))
-    previous = np.load(os.path.join(prep_path, f'{general.PREVIOUS_PREFIX}_{year}.npy')).reshape((-1,1))
+    labels = np.load(os.path.join(prep_path, f'{general.LABEL_PREFIX}_{year}.npy'), allow_pickle=True).reshape((-1,1))
+    previous = np.load(os.path.join(prep_path, f'{general.PREVIOUS_PREFIX}_{year}.npy'), allow_pickle=True).reshape((-1,1))
 
-    img_0 = np.load(os.path.join(prep_path, f'{t_0}.npy')).reshape((-1,n_img_layers))
-    img_1 = np.load(os.path.join(prep_path, f'{t_1}.npy')).reshape((-1,n_img_layers))
+    img_0 = np.load(os.path.join(prep_path, f'{t_0}.npy'), allow_pickle=True).reshape((-1,n_img_layers))
+    img_1 = np.load(os.path.join(prep_path, f'{t_1}.npy'), allow_pickle=True).reshape((-1,n_img_layers))
 
     def func_train():
         while True:
@@ -137,7 +137,7 @@ class PredictDataGen_opt(tf.keras.utils.Sequence):
         t_0 = f'{year-1}'
         t_1 = f'{year}'
 
-        shape = np.load(os.path.join(prep_path, f'{general.LABEL_PREFIX}_{year}.npy')).shape
+        shape = np.load(os.path.join(prep_path, f'{general.LABEL_PREFIX}_{year}.npy'), allow_pickle=True).shape
 
         #n_shape = (shape[0]+2*test_crop , shape[1]+2*test_crop)
 
@@ -152,10 +152,10 @@ class PredictDataGen_opt(tf.keras.utils.Sequence):
 
         n_shape = (shape[0] + pad_0 + 2*test_crop, shape[1] + pad_1 + 2*test_crop)
 
-        self.opt_0 = np.pad(np.load(os.path.join(prep_path, f'{t_0}.npy')), pad_matrix, mode='reflect').reshape((-1,n_img_layers))
-        self.opt_1 = np.pad(np.load(os.path.join(prep_path, f'{t_1}.npy')), pad_matrix, mode='reflect').reshape((-1,n_img_layers))
+        self.opt_0 = np.pad(np.load(os.path.join(prep_path, f'{t_0}.npy'), allow_pickle=True), pad_matrix, mode='reflect').reshape((-1,n_img_layers))
+        self.opt_1 = np.pad(np.load(os.path.join(prep_path, f'{t_1}.npy'), allow_pickle=True), pad_matrix, mode='reflect').reshape((-1,n_img_layers))
 
-        self.previous = np.pad(np.expand_dims(np.load(os.path.join(prep_path, f'{general.PREVIOUS_PREFIX}_{year}.npy')), axis=-1), pad_matrix, mode='reflect').reshape((-1,1))
+        self.previous = np.pad(np.expand_dims(np.load(os.path.join(prep_path, f'{general.PREVIOUS_PREFIX}_{year}.npy'), allow_pickle=True), axis=-1), pad_matrix, mode='reflect').reshape((-1,1))
 
         idx_matrix = np.arange(n_shape[0]*n_shape[1]).reshape(n_shape)
 
@@ -186,16 +186,16 @@ class SampleData(tf.keras.utils.Sequence):
         t_0 = f'{year-1}'
         t_1 = f'{year}'
 
-        label = np.load(os.path.join(prep_path, f'{general.LABEL_PREFIX}_{year}.npy'))
+        label = np.load(os.path.join(prep_path, f'{general.LABEL_PREFIX}_{year}.npy'), allow_pickle=True)
         shape = label.shape
         label = label.reshape((-1,1))
 
-        img_0 = np.load(os.path.join(prep_path, f'{t_0}.npy')).reshape((-1,n_img_layers))
-        img_1 = np.load(os.path.join(prep_path, f'{t_1}.npy')).reshape((-1,n_img_layers))
+        img_0 = np.load(os.path.join(prep_path, f'{t_0}.npy'), allow_pickle=True).reshape((-1,n_img_layers))
+        img_1 = np.load(os.path.join(prep_path, f'{t_1}.npy'), allow_pickle=True).reshape((-1,n_img_layers))
 
-        previous = np.expand_dims(np.load(os.path.join(prep_path, f'{general.PREVIOUS_PREFIX}_{year}.npy')), axis=-1).reshape((-1,1))
+        previous = np.expand_dims(np.load(os.path.join(prep_path, f'{general.PREVIOUS_PREFIX}_{year}.npy'), allow_pickle=True), axis=-1).reshape((-1,1))
 
-        patches_idxs = np.load(os.path.join(prep_path, f'{general.DEFORESTATION_PATCHES_PREFIX}_{year}_val.npy' ))
+        patches_idxs = np.load(os.path.join(prep_path, f'{general.DEFORESTATION_PATCHES_PREFIX}_{year}_val.npy' ), allow_pickle=True)
         np.random.seed(123)
         np.random.shuffle(patches_idxs)
         self.patches_idxs = patches_idxs[:size,:,:]

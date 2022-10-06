@@ -208,8 +208,8 @@ print('Train: complementary validation tiles patches shape:', idx_patches_1_val.
 print('Test: complementary train tiles patches patches:', idx_patches_2_train.shape)
 print('Test: complementary train tiles patches patches:', idx_patches_2_val.shape)
 
-np.save(os.path.join(paths.PREPARED_PATH, f'{default.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_1}_train.npy'), idx_patches_1_train)
-np.save(os.path.join(paths.PREPARED_PATH, f'{default.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_1}_val.npy'), idx_patches_1_val)
+np.save(os.path.join(paths.PREPARED_PATH, f'{general.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_1}_train.npy'), idx_patches_1_train)
+np.save(os.path.join(paths.PREPARED_PATH, f'{general.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_1}_val.npy'), idx_patches_1_val)
 
-np.save(os.path.join(paths.PREPARED_PATH, f'{default.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_2}_train.npy'), idx_patches_2_train)
-np.save(os.path.join(paths.PREPARED_PATH, f'{default.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_2}_val.npy'), idx_patches_2_val)
+np.save(os.path.join(paths.PREPARED_PATH, f'{general.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_2}_train.npy'), idx_patches_2_train)
+np.save(os.path.join(paths.PREPARED_PATH, f'{general.NO_DEFORESTATION_PATCHES_PREFIX}_{general.YEAR_2}_val.npy'), idx_patches_2_val)

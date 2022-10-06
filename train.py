@@ -11,13 +11,13 @@ import sys
 from models.callbacks import ImageSampleLogger
 
 parser = argparse.ArgumentParser(
-    description='Train N models based in the same parameters'
+    description='Train NUMBER_MODELS models based in the same parameters'
 )
 
 parser.add_argument( # Experiment number
     '-e', '--experiment',
     type = int,
-    default = 2,
+    default = 3,
     help = 'The number of the experiment'
 )
 
