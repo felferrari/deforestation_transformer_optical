@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 parser = argparse.ArgumentParser(
-    description='Train N models based in the same parameters'
+    description='Evaluate mAP of the models\' predictions'
 )
 
 parser.add_argument( # Experiment number

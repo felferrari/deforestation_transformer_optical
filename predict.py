@@ -12,7 +12,7 @@ import numpy as np
 from tqdm import tqdm
 
 parser = argparse.ArgumentParser(
-    description='Train N models based in the same parameters'
+    description='Predict NUMBER_MODELS models based in the same parameters'
 )
 
 parser.add_argument( # Experiment number
